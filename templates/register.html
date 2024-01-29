@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <div class="form-group">Podaj imię
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">Podaj nazwisko
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">Podaj adres e-mail
+                {{ form.email }}
+            </div>
+            <div class="form-group">Podaj hasło
+                {{ form.password }}
+            </div>
+            <div class="form-group">Powtóz hasło
+                {{ form.password2 }}
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            </div>
+            <p class="already">Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+        </form>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

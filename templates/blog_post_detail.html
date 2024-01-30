@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block additional_content %}
+    <div class="container w-75 my-4">
+        <h1>{{ blog_details.title }}</h1>
+        <p>Author: {{ blog_details.author }}</p>
+        <p>Date and Time: {{ blog_details.dateTime }}</p>
+        {% if blog_details.image %}
+            <img src="{{ blog_details.image.url }}" alt="Post Image">
+        {% endif %}
+        <p>{{ blog_details.content }}</p>
+        <br>
+        <h2>All Comments ({{ blog_details.comment_set.count }})</h2>
+        <br>
+        {% for comment in blog_details.comment_set.all %}
+            <div class="card">
+                <div class="card-header">
+                    <span style="font-size: 22px;">{{ comment.user }} </span> <span
+                        style="font-size: 12px;">{{ comment.dateTime }}</span>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-text">{{ comment.content }}</h6>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+        <a href="{% url 'blogs' %}" class="btn btn-primary">Back</a>
+    </div>
+{% endblock additional_content %}

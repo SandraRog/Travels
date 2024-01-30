@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block additional_content %}
+<form action="/travels/add_blogs/" enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="container mt-4">
+        {{ form.as_p }}
+        <button class="btn btn-primary">Add Blog</button>
+    </div>
+</form>
+{% endblock additional_content %}
